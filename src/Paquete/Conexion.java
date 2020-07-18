@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Conexion {
     private ArrayList<Integer> conexiones = new ArrayList<Integer>();
-    private ArrayList<Double> valor = new ArrayList<Double>();
+    private ArrayList<String> valor = new ArrayList<String>();
 
-    public ArrayList<Double> getValor() {
+    public ArrayList<String> getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor.add(valor);
     }
 
