@@ -1,5 +1,6 @@
 package Paquete;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,12 +8,34 @@ import java.util.Iterator;
 public class Main {
 
     public static ArrayList<Ruta> lista_rutas = new ArrayList<Ruta>();
-    public static final int n_poi=7;
-    public static final String[] poi={"Momias ","Casona Coburgo ","Paramo del Sumapaz ","Museo arqueologico ","Casona Novillero ","Casona Balmoral ","Casona Tulipana "};
-    public static final String[][] matriz = {{"-1","0.9","0","-1","0","1.6","0.4"},{"34.65","-1","-1","0","2.05","0.15","0"},{"0","-1","-1","25.45","27.7","30.6","30"},{"36.4","0","-1","-1","2.5","1.4","0.6"},{"32.2","0.5","-1","0.95","-1","0","0"},{"35.2","0","-1","1.25","1.4","-1","0.2"},{"34.14","0","-1","0.6","1.55","0.35","-1"}};
+    public static int n_poi=0;
+    public static String [] poi;
+    public static String[][] matriz ;
     public static ArrayList<Conexion> poi_conectados = new ArrayList<Conexion>();        //Guarda las columnas eficientes de cada POI.
 
     public static void main(String[] args) {
+        n_poi=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite la cantidad de puntos de interes"));
+        poi=new String[n_poi];
+        matriz=new String[n_poi][n_poi];
+        for(int a=0;a<n_poi;a++){
+
+          poi[a]=JOptionPane.showInputDialog(null,"Digite el nombre del punto de interes");
+
+        }
+        for(int b=0;b<matriz.length;b++){
+        for(int c=0;c<matriz.length;c++){
+
+            if(b==c){
+                matriz[b][c]="-1";
+            } else if(b!=c){
+                matriz[b][c]=JOptionPane.showInputDialog(null,"Digite los datos de la fila "+poi[b]+" y la columna "+poi[c]);
+
+            }
+
+
+        }
+
+        }
 
         for(int i = 0; i < matriz.length; i++) {
             Conexion poi_c = new Conexion();
@@ -56,9 +79,11 @@ public class Main {
     }
 
     public static void mostrar_rutas(){
+        String reco="Rutas validas";
         for(Ruta iterador_rutas:lista_rutas){
-            System.out.println(iterador_rutas.getRuta()+" Valor: "+iterador_rutas.getPuntaje()+" Resultado: "+iterador_rutas.getRes());                  //Imprime las rutas validas/optimas con su valor.
+            reco=reco+"\n"+(iterador_rutas.getRuta()+" Valor: "+iterador_rutas.getPuntaje()+" Resultado: "+iterador_rutas.getRes());                  //Imprime las rutas validas/optimas con su valor.
         }
+        JOptionPane.showMessageDialog(null,reco);
     }
 
     public static void rutas_aptas(){
@@ -75,11 +100,11 @@ public class Main {
             }
             cont++;
         }
-
-        System.out.println("\nRutas más aptas:");
+        String ruta="\nRutas más aptas:";
         for (int iterador:index) {
-            System.out.println(lista_rutas.get(iterador).getRuta()+"Valor: "+lista_rutas.get(iterador).getRes());
+            ruta=ruta+"\n"+(lista_rutas.get(iterador).getRuta()+"Valor: "+lista_rutas.get(iterador).getRes());
         }
+        JOptionPane.showMessageDialog(null,""+ruta);
     }
 
 }
