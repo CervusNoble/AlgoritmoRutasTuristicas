@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="AlgoritmoRutasTuristicas:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AlgoritmoRutasTuristicas_jar</output-path>
+    <root id="archive" name="AlgoritmoRutasTuristicas.jar">
+      <element id="module-output" name="AlgoritmoRutasTuristicas" />
+    </root>
+  </artifact>
+</component>
